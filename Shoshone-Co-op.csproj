@@ -1,0 +1,736 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7A271E1D-F692-48E1-8107-33C56BB75969}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ShoshoneCoop</RootNamespace>
+    <AssemblyName>Shoshone-Co-op</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Game\Firewatch\BepInEx\plugins\Shoshone-Co-op\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>C:\Program Files %28x86%29\Steam\steamapps\common\Firewatch\BepInEx\plugins\Shoshone-Co-op\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>5</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="BepInEx, Version=5.4.23.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\BepInEx.dll</HintPath>
+    </Reference>
+    <Reference Include="BepInEx.Harmony, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\BepInEx.Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="BepInEx.Preloader, Version=5.4.23.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\BepInEx.Preloader.dll</HintPath>
+    </Reference>
+    <Reference Include="ConditionalExpression, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\ConditionalExpression.dll</HintPath>
+    </Reference>
+    <Reference Include="HarmonyXInterop, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\HarmonyXInterop.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Win32.Registry, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Win32.Registry.4.7.0\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil, Version=0.10.4.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\Mono.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil.Mdb">
+      <HintPath>Libraries\Mono.Cecil.Mdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil.Pdb">
+      <HintPath>Libraries\Mono.Cecil.Pdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil.Rocks">
+      <HintPath>Libraries\Mono.Cecil.Rocks.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Security">
+      <HintPath>Libraries\Mono.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoMod.RuntimeDetour, Version=22.1.29.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\MonoMod.RuntimeDetour.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoMod.Utils, Version=22.1.29.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\MonoMod.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio, Version=2.2.1.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>packages\NAudio.2.2.1\lib\net472\NAudio.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio.Asio, Version=2.2.1.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>packages\NAudio.Asio.2.2.1\lib\netstandard2.0\NAudio.Asio.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>packages\NAudio.Core.2.2.1\lib\netstandard2.0\NAudio.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio.Midi, Version=2.2.1.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>packages\NAudio.Midi.2.2.1\lib\netstandard2.0\NAudio.Midi.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio.Wasapi, Version=2.2.1.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>packages\NAudio.Wasapi.2.2.1\lib\netstandard2.0\NAudio.Wasapi.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio.WinForms, Version=2.2.1.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>packages\NAudio.WinForms.2.2.1\lib\net472\NAudio.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio.WinMM, Version=2.2.1.0, Culture=neutral, PublicKeyToken=e279aa5131008a41, processorArchitecture=MSIL">
+      <HintPath>packages\NAudio.WinMM.2.2.1\lib\netstandard2.0\NAudio.WinMM.dll</HintPath>
+    </Reference>
+    <Reference Include="PlayMaker, Version=1.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\PlayMaker.dll</HintPath>
+    </Reference>
+    <Reference Include="protobuf-net, Version=2.0.0.668, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\protobuf-net.dll</HintPath>
+    </Reference>
+    <Reference Include="Rewired_Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\Rewired_Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Rewired_Windows, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\Rewired_Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="SampleClassLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\SampleClassLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="sharedRuntime, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\sharedRuntime.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Security.AccessControl, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.AccessControl.4.7.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Principal.Windows.4.7.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UnityEditor">
+      <HintPath>Libraries\UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Android.Extensions">
+      <HintPath>Libraries\UnityEditor.Android.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.CoreModule">
+      <HintPath>Libraries\UnityEditor.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.DeviceSimulatorModule">
+      <HintPath>Libraries\UnityEditor.DeviceSimulatorModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.DiagnosticsModule">
+      <HintPath>Libraries\UnityEditor.DiagnosticsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Graphs">
+      <HintPath>Libraries\UnityEditor.Graphs.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.GraphViewModule">
+      <HintPath>Libraries\UnityEditor.GraphViewModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.PackageManagerUIModule">
+      <HintPath>Libraries\UnityEditor.PackageManagerUIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.PresetsUIModule">
+      <HintPath>Libraries\UnityEditor.PresetsUIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.QuickSearchModule">
+      <HintPath>Libraries\UnityEditor.QuickSearchModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.SceneTemplateModule">
+      <HintPath>Libraries\UnityEditor.SceneTemplateModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.TestRunner">
+      <HintPath>Libraries\UnityEditor.TestRunner.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.TextCoreFontEngineModule">
+      <HintPath>Libraries\UnityEditor.TextCoreFontEngineModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.TextCoreTextEngineModule">
+      <HintPath>Libraries\UnityEditor.TextCoreTextEngineModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>Libraries\UnityEditor.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.UIBuilderModule">
+      <HintPath>Libraries\UnityEditor.UIBuilderModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.UIElementsModule">
+      <HintPath>Libraries\UnityEditor.UIElementsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.UIElementsSamplesModule">
+      <HintPath>Libraries\UnityEditor.UIElementsSamplesModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.UIServiceModule">
+      <HintPath>Libraries\UnityEditor.UIServiceModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.UnityConnectModule">
+      <HintPath>Libraries\UnityEditor.UnityConnectModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.WindowsStandalone.Extensions">
+      <HintPath>Libraries\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AccessibilityModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.AccessibilityModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AIModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.AIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AnimationModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.AnimationModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ARModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.ARModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.AssetBundleModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AudioModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.AudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClothModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.ClothModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClusterInputModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.ClusterInputModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClusterRendererModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.ClusterRendererModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CrashReportingModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.CrashReportingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.DirectorModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.DirectorModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.GameCenterModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.GameCenterModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.GridModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.GridModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.ImageConversionModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.InputModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.JSONSerializeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Networking, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ParticlesLegacyModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.ParticlesLegacyModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ParticleSystemModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.ParticleSystemModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PerformanceReportingModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.PerformanceReportingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Physics2DModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.Physics2DModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.PhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ScreenCaptureModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.ScreenCaptureModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SharedInternalsModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.SharedInternalsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpatialTracking, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.SpatialTracking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpriteMaskModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.SpriteMaskModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpriteShapeModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.SpriteShapeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.StandardEvents, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.StandardEvents.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.StyleSheetsModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.StyleSheetsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TerrainModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.TerrainModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TerrainPhysicsModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.TerrainPhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.TextRenderingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TilemapModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.TilemapModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Timeline, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIElementsModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.UIElementsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.UIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UNETModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.UNETModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityAnalyticsModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.UnityAnalyticsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityConnectModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.UnityConnectModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestAudioModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.UnityWebRequestModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestTextureModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestWWWModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VehiclesModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.VehiclesModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VideoModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.VideoModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VRModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.VRModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.WebModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.WebModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.WindModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\UnityEngine.WindModule.dll</HintPath>
+    </Reference>
+    <Reference Include="urecordRuntime, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\urecordRuntime.dll</HintPath>
+    </Reference>
+    <Reference Include="XGamingRuntime, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\XGamingRuntime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="CopyTransform.cs" />
+    <Compile Include="NetworkedPlayer.cs" />
+    <Compile Include="NetworkedSounds.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".editorconfig" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".gitattributes" />
+    <Content Include="bin\Debug\0Harmony.dll" />
+    <Content Include="bin\Debug\Assembly-CSharp-firstpass.dll" />
+    <Content Include="bin\Debug\Assembly-CSharp.dll" />
+    <Content Include="bin\Debug\BepInEx.dll" />
+    <Content Include="bin\Debug\BepInEx.Harmony.dll" />
+    <Content Include="bin\Debug\BepInEx.Preloader.dll" />
+    <Content Include="bin\Debug\ConditionalExpression.dll" />
+    <Content Include="bin\Debug\GalaxyCSharp.dll" />
+    <Content Include="bin\Debug\HarmonyXInterop.dll" />
+    <Content Include="bin\Debug\Mono.Cecil.dll" />
+    <Content Include="bin\Debug\Mono.Cecil.Mdb.dll" />
+    <Content Include="bin\Debug\Mono.Cecil.Pdb.dll" />
+    <Content Include="bin\Debug\Mono.Cecil.Rocks.dll" />
+    <Content Include="bin\Debug\Mono.Security.dll" />
+    <Content Include="bin\Debug\MonoMod.RuntimeDetour.dll" />
+    <Content Include="bin\Debug\MonoMod.Utils.dll" />
+    <Content Include="bin\Debug\PlayMaker.dll" />
+    <Content Include="bin\Debug\protobuf-net.dll" />
+    <Content Include="bin\Debug\Rewired_Core.dll" />
+    <Content Include="bin\Debug\Rewired_Windows.dll" />
+    <Content Include="bin\Debug\SampleClassLibrary.dll" />
+    <Content Include="bin\Debug\sharedRuntime.dll" />
+    <Content Include="bin\Debug\Shoshone-Co-op.dll" />
+    <Content Include="bin\Debug\Shoshone-Co-op.pdb" />
+    <Content Include="bin\Debug\UnityEditor.Android.Extensions.dll" />
+    <Content Include="bin\Debug\UnityEditor.CoreModule.dll" />
+    <Content Include="bin\Debug\UnityEditor.DeviceSimulatorModule.dll" />
+    <Content Include="bin\Debug\UnityEditor.DiagnosticsModule.dll" />
+    <Content Include="bin\Debug\UnityEditor.dll" />
+    <Content Include="bin\Debug\UnityEditor.Graphs.dll" />
+    <Content Include="bin\Debug\UnityEditor.GraphViewModule.dll" />
+    <Content Include="bin\Debug\UnityEditor.PackageManagerUIModule.dll" />
+    <Content Include="bin\Debug\UnityEditor.PresetsUIModule.dll" />
+    <Content Include="bin\Debug\UnityEditor.QuickSearchModule.dll" />
+    <Content Include="bin\Debug\UnityEditor.SceneTemplateModule.dll" />
+    <Content Include="bin\Debug\UnityEditor.TestRunner.dll" />
+    <Content Include="bin\Debug\UnityEditor.TextCoreFontEngineModule.dll" />
+    <Content Include="bin\Debug\UnityEditor.TextCoreTextEngineModule.dll" />
+    <Content Include="bin\Debug\UnityEditor.UI.dll" />
+    <Content Include="bin\Debug\UnityEditor.UIBuilderModule.dll" />
+    <Content Include="bin\Debug\UnityEditor.UIElementsModule.dll" />
+    <Content Include="bin\Debug\UnityEditor.UIElementsSamplesModule.dll" />
+    <Content Include="bin\Debug\UnityEditor.UIServiceModule.dll" />
+    <Content Include="bin\Debug\UnityEditor.UnityConnectModule.dll" />
+    <Content Include="bin\Debug\UnityEditor.WindowsStandalone.Extensions.dll" />
+    <Content Include="bin\Debug\UnityEngine.AccessibilityModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.AccessibilityModule.xml" />
+    <Content Include="bin\Debug\UnityEngine.AIModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.AIModule.xml" />
+    <Content Include="bin\Debug\UnityEngine.AnimationModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.AnimationModule.xml" />
+    <Content Include="bin\Debug\UnityEngine.ARModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.ARModule.xml" />
+    <Content Include="bin\Debug\UnityEngine.AssetBundleModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.AssetBundleModule.xml" />
+    <Content Include="bin\Debug\UnityEngine.AudioModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.AudioModule.xml" />
+    <Content Include="bin\Debug\UnityEngine.ClothModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.ClothModule.xml" />
+    <Content Include="bin\Debug\UnityEngine.ClusterInputModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.ClusterInputModule.xml" />
+    <Content Include="bin\Debug\UnityEngine.ClusterRendererModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.ClusterRendererModule.xml" />
+    <Content Include="bin\Debug\UnityEngine.CoreModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.CoreModule.xml" />
+    <Content Include="bin\Debug\UnityEngine.CrashReportingModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.CrashReportingModule.xml" />
+    <Content Include="bin\Debug\UnityEngine.DirectorModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.DirectorModule.xml" />
+    <Content Include="bin\Debug\UnityEngine.dll" />
+    <Content Include="bin\Debug\UnityEngine.GameCenterModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.GameCenterModule.xml" />
+    <Content Include="bin\Debug\UnityEngine.GridModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.GridModule.xml" />
+    <Content Include="bin\Debug\UnityEngine.ImageConversionModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.ImageConversionModule.xml" />
+    <Content Include="bin\Debug\UnityEngine.IMGUIModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.IMGUIModule.xml" />
+    <Content Include="bin\Debug\UnityEngine.InputModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.InputModule.xml" />
+    <Content Include="bin\Debug\UnityEngine.JSONSerializeModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.JSONSerializeModule.xml" />
+    <Content Include="bin\Debug\UnityEngine.Networking.dll" />
+    <Content Include="bin\Debug\UnityEngine.ParticlesLegacyModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.ParticlesLegacyModule.xml" />
+    <Content Include="bin\Debug\UnityEngine.ParticleSystemModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.ParticleSystemModule.xml" />
+    <Content Include="bin\Debug\UnityEngine.PerformanceReportingModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.PerformanceReportingModule.xml" />
+    <Content Include="bin\Debug\UnityEngine.Physics2DModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.Physics2DModule.xml" />
+    <Content Include="bin\Debug\UnityEngine.PhysicsModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.PhysicsModule.xml" />
+    <Content Include="bin\Debug\UnityEngine.ScreenCaptureModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.ScreenCaptureModule.xml" />
+    <Content Include="bin\Debug\UnityEngine.SharedInternalsModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.SharedInternalsModule.xml" />
+    <Content Include="bin\Debug\UnityEngine.SpatialTracking.dll" />
+    <Content Include="bin\Debug\UnityEngine.SpriteMaskModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.SpriteMaskModule.xml" />
+    <Content Include="bin\Debug\UnityEngine.SpriteShapeModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.SpriteShapeModule.xml" />
+    <Content Include="bin\Debug\UnityEngine.StandardEvents.dll" />
+    <Content Include="bin\Debug\UnityEngine.StyleSheetsModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.StyleSheetsModule.xml" />
+    <Content Include="bin\Debug\UnityEngine.TerrainModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.TerrainModule.xml" />
+    <Content Include="bin\Debug\UnityEngine.TerrainPhysicsModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.TerrainPhysicsModule.xml" />
+    <Content Include="bin\Debug\UnityEngine.TextRenderingModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.TextRenderingModule.xml" />
+    <Content Include="bin\Debug\UnityEngine.TilemapModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.TilemapModule.xml" />
+    <Content Include="bin\Debug\UnityEngine.Timeline.dll" />
+    <Content Include="bin\Debug\UnityEngine.UI.dll" />
+    <Content Include="bin\Debug\UnityEngine.UIElementsModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.UIElementsModule.xml" />
+    <Content Include="bin\Debug\UnityEngine.UIModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.UIModule.xml" />
+    <Content Include="bin\Debug\UnityEngine.UNETModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.UNETModule.xml" />
+    <Content Include="bin\Debug\UnityEngine.UnityAnalyticsModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.UnityAnalyticsModule.xml" />
+    <Content Include="bin\Debug\UnityEngine.UnityConnectModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.UnityConnectModule.xml" />
+    <Content Include="bin\Debug\UnityEngine.UnityWebRequestAudioModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.UnityWebRequestAudioModule.xml" />
+    <Content Include="bin\Debug\UnityEngine.UnityWebRequestModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.UnityWebRequestModule.xml" />
+    <Content Include="bin\Debug\UnityEngine.UnityWebRequestTextureModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.UnityWebRequestTextureModule.xml" />
+    <Content Include="bin\Debug\UnityEngine.UnityWebRequestWWWModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.UnityWebRequestWWWModule.xml" />
+    <Content Include="bin\Debug\UnityEngine.VehiclesModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.VehiclesModule.xml" />
+    <Content Include="bin\Debug\UnityEngine.VideoModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.VideoModule.xml" />
+    <Content Include="bin\Debug\UnityEngine.VRModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.VRModule.xml" />
+    <Content Include="bin\Debug\UnityEngine.WebModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.WebModule.xml" />
+    <Content Include="bin\Debug\UnityEngine.WindModule.dll" />
+    <Content Include="bin\Debug\UnityEngine.WindModule.xml" />
+    <Content Include="bin\Debug\urecordRuntime.dll" />
+    <Content Include="bin\Debug\XGamingRuntime.dll" />
+    <Content Include="Libraries\0Harmony.dll" />
+    <Content Include="Libraries\0Harmony20.dll" />
+    <Content Include="Libraries\AmplifyBloom.dll" />
+    <Content Include="Libraries\AmplifyColor.dll" />
+    <Content Include="Libraries\AmplifyMotion.dll" />
+    <Content Include="Libraries\AmplifyOcclusion.dll" />
+    <Content Include="Libraries\Assembly-CSharp-firstpass.dll" />
+    <Content Include="Libraries\Assembly-CSharp.dll" />
+    <Content Include="Libraries\BepInEx.dll" />
+    <Content Include="Libraries\BepInEx.Harmony.dll" />
+    <Content Include="Libraries\BepInEx.Preloader.dll" />
+    <Content Include="Libraries\ConditionalExpression.dll" />
+    <Content Include="Libraries\GalaxyCSharp.dll" />
+    <Content Include="Libraries\HarmonyXInterop.dll" />
+    <Content Include="Libraries\Mono.Cecil.dll" />
+    <Content Include="Libraries\Mono.Cecil.Mdb.dll" />
+    <Content Include="Libraries\Mono.Cecil.Pdb.dll" />
+    <Content Include="Libraries\Mono.Cecil.Rocks.dll" />
+    <Content Include="Libraries\Mono.Security.dll" />
+    <Content Include="Libraries\MonoMod.RuntimeDetour.dll" />
+    <Content Include="Libraries\MonoMod.Utils.dll" />
+    <Content Include="Libraries\mscorlib.dll" />
+    <Content Include="Libraries\PlayMaker.dll" />
+    <Content Include="Libraries\protobuf-net.dll" />
+    <Content Include="Libraries\Rewired_Core.dll" />
+    <Content Include="Libraries\Rewired_Windows.dll" />
+    <Content Include="Libraries\SampleClassLibrary.dll" />
+    <Content Include="Libraries\sharedRuntime.dll" />
+    <Content Include="Libraries\System.Core.dll" />
+    <Content Include="Libraries\System.dll" />
+    <Content Include="Libraries\System.Xml.dll" />
+    <Content Include="Libraries\UnityEditor.Android.Extensions.dll" />
+    <Content Include="Libraries\UnityEditor.CoreModule.dll" />
+    <Content Include="Libraries\UnityEditor.DeviceSimulatorModule.dll" />
+    <Content Include="Libraries\UnityEditor.DiagnosticsModule.dll" />
+    <Content Include="Libraries\UnityEditor.dll" />
+    <Content Include="Libraries\UnityEditor.Graphs.dll" />
+    <Content Include="Libraries\UnityEditor.GraphViewModule.dll" />
+    <Content Include="Libraries\UnityEditor.PackageManagerUIModule.dll" />
+    <Content Include="Libraries\UnityEditor.PresetsUIModule.dll" />
+    <Content Include="Libraries\UnityEditor.QuickSearchModule.dll" />
+    <Content Include="Libraries\UnityEditor.SceneTemplateModule.dll" />
+    <Content Include="Libraries\UnityEditor.TestRunner.dll" />
+    <Content Include="Libraries\UnityEditor.TextCoreFontEngineModule.dll" />
+    <Content Include="Libraries\UnityEditor.TextCoreTextEngineModule.dll" />
+    <Content Include="Libraries\UnityEditor.UI.dll" />
+    <Content Include="Libraries\UnityEditor.UIBuilderModule.dll" />
+    <Content Include="Libraries\UnityEditor.UIElementsModule.dll" />
+    <Content Include="Libraries\UnityEditor.UIElementsSamplesModule.dll" />
+    <Content Include="Libraries\UnityEditor.UIServiceModule.dll" />
+    <Content Include="Libraries\UnityEditor.UnityConnectModule.dll" />
+    <Content Include="Libraries\UnityEditor.WindowsStandalone.Extensions.dll" />
+    <Content Include="Libraries\UnityEngine.AccessibilityModule.dll" />
+    <Content Include="Libraries\UnityEngine.AccessibilityModule.xml" />
+    <Content Include="Libraries\UnityEngine.AIModule.dll" />
+    <Content Include="Libraries\UnityEngine.AIModule.xml" />
+    <Content Include="Libraries\UnityEngine.AnimationModule.dll" />
+    <Content Include="Libraries\UnityEngine.AnimationModule.xml" />
+    <Content Include="Libraries\UnityEngine.ARModule.dll" />
+    <Content Include="Libraries\UnityEngine.ARModule.xml" />
+    <Content Include="Libraries\UnityEngine.AssetBundleModule.dll" />
+    <Content Include="Libraries\UnityEngine.AssetBundleModule.xml" />
+    <Content Include="Libraries\UnityEngine.AudioModule.dll" />
+    <Content Include="Libraries\UnityEngine.AudioModule.xml" />
+    <Content Include="Libraries\UnityEngine.ClothModule.dll" />
+    <Content Include="Libraries\UnityEngine.ClothModule.xml" />
+    <Content Include="Libraries\UnityEngine.ClusterInputModule.dll" />
+    <Content Include="Libraries\UnityEngine.ClusterInputModule.xml" />
+    <Content Include="Libraries\UnityEngine.ClusterRendererModule.dll" />
+    <Content Include="Libraries\UnityEngine.ClusterRendererModule.xml" />
+    <Content Include="Libraries\UnityEngine.CoreModule.dll" />
+    <Content Include="Libraries\UnityEngine.CoreModule.xml" />
+    <Content Include="Libraries\UnityEngine.CrashReportingModule.dll" />
+    <Content Include="Libraries\UnityEngine.CrashReportingModule.xml" />
+    <Content Include="Libraries\UnityEngine.DirectorModule.dll" />
+    <Content Include="Libraries\UnityEngine.DirectorModule.xml" />
+    <Content Include="Libraries\UnityEngine.dll" />
+    <Content Include="Libraries\UnityEngine.GameCenterModule.dll" />
+    <Content Include="Libraries\UnityEngine.GameCenterModule.xml" />
+    <Content Include="Libraries\UnityEngine.GridModule.dll" />
+    <Content Include="Libraries\UnityEngine.GridModule.xml" />
+    <Content Include="Libraries\UnityEngine.ImageConversionModule.dll" />
+    <Content Include="Libraries\UnityEngine.ImageConversionModule.xml" />
+    <Content Include="Libraries\UnityEngine.IMGUIModule.dll" />
+    <Content Include="Libraries\UnityEngine.IMGUIModule.xml" />
+    <Content Include="Libraries\UnityEngine.InputModule.dll" />
+    <Content Include="Libraries\UnityEngine.InputModule.xml" />
+    <Content Include="Libraries\UnityEngine.JSONSerializeModule.dll" />
+    <Content Include="Libraries\UnityEngine.JSONSerializeModule.xml" />
+    <Content Include="Libraries\UnityEngine.Networking.dll" />
+    <Content Include="Libraries\UnityEngine.ParticlesLegacyModule.dll" />
+    <Content Include="Libraries\UnityEngine.ParticlesLegacyModule.xml" />
+    <Content Include="Libraries\UnityEngine.ParticleSystemModule.dll" />
+    <Content Include="Libraries\UnityEngine.ParticleSystemModule.xml" />
+    <Content Include="Libraries\UnityEngine.PerformanceReportingModule.dll" />
+    <Content Include="Libraries\UnityEngine.PerformanceReportingModule.xml" />
+    <Content Include="Libraries\UnityEngine.Physics2DModule.dll" />
+    <Content Include="Libraries\UnityEngine.Physics2DModule.xml" />
+    <Content Include="Libraries\UnityEngine.PhysicsModule.dll" />
+    <Content Include="Libraries\UnityEngine.PhysicsModule.xml" />
+    <Content Include="Libraries\UnityEngine.ScreenCaptureModule.dll" />
+    <Content Include="Libraries\UnityEngine.ScreenCaptureModule.xml" />
+    <Content Include="Libraries\UnityEngine.SharedInternalsModule.dll" />
+    <Content Include="Libraries\UnityEngine.SharedInternalsModule.xml" />
+    <Content Include="Libraries\UnityEngine.SpatialTracking.dll" />
+    <Content Include="Libraries\UnityEngine.SpriteMaskModule.dll" />
+    <Content Include="Libraries\UnityEngine.SpriteMaskModule.xml" />
+    <Content Include="Libraries\UnityEngine.SpriteShapeModule.dll" />
+    <Content Include="Libraries\UnityEngine.SpriteShapeModule.xml" />
+    <Content Include="Libraries\UnityEngine.StandardEvents.dll" />
+    <Content Include="Libraries\UnityEngine.StyleSheetsModule.dll" />
+    <Content Include="Libraries\UnityEngine.StyleSheetsModule.xml" />
+    <Content Include="Libraries\UnityEngine.TerrainModule.dll" />
+    <Content Include="Libraries\UnityEngine.TerrainModule.xml" />
+    <Content Include="Libraries\UnityEngine.TerrainPhysicsModule.dll" />
+    <Content Include="Libraries\UnityEngine.TerrainPhysicsModule.xml" />
+    <Content Include="Libraries\UnityEngine.TextRenderingModule.dll" />
+    <Content Include="Libraries\UnityEngine.TextRenderingModule.xml" />
+    <Content Include="Libraries\UnityEngine.TilemapModule.dll" />
+    <Content Include="Libraries\UnityEngine.TilemapModule.xml" />
+    <Content Include="Libraries\UnityEngine.Timeline.dll" />
+    <Content Include="Libraries\UnityEngine.UI.dll" />
+    <Content Include="Libraries\UnityEngine.UIElementsModule.dll" />
+    <Content Include="Libraries\UnityEngine.UIElementsModule.xml" />
+    <Content Include="Libraries\UnityEngine.UIModule.dll" />
+    <Content Include="Libraries\UnityEngine.UIModule.xml" />
+    <Content Include="Libraries\UnityEngine.UNETModule.dll" />
+    <Content Include="Libraries\UnityEngine.UNETModule.xml" />
+    <Content Include="Libraries\UnityEngine.UnityAnalyticsModule.dll" />
+    <Content Include="Libraries\UnityEngine.UnityAnalyticsModule.xml" />
+    <Content Include="Libraries\UnityEngine.UnityConnectModule.dll" />
+    <Content Include="Libraries\UnityEngine.UnityConnectModule.xml" />
+    <Content Include="Libraries\UnityEngine.UnityWebRequestAudioModule.dll" />
+    <Content Include="Libraries\UnityEngine.UnityWebRequestAudioModule.xml" />
+    <Content Include="Libraries\UnityEngine.UnityWebRequestModule.dll" />
+    <Content Include="Libraries\UnityEngine.UnityWebRequestModule.xml" />
+    <Content Include="Libraries\UnityEngine.UnityWebRequestTextureModule.dll" />
+    <Content Include="Libraries\UnityEngine.UnityWebRequestTextureModule.xml" />
+    <Content Include="Libraries\UnityEngine.UnityWebRequestWWWModule.dll" />
+    <Content Include="Libraries\UnityEngine.UnityWebRequestWWWModule.xml" />
+    <Content Include="Libraries\UnityEngine.VehiclesModule.dll" />
+    <Content Include="Libraries\UnityEngine.VehiclesModule.xml" />
+    <Content Include="Libraries\UnityEngine.VideoModule.dll" />
+    <Content Include="Libraries\UnityEngine.VideoModule.xml" />
+    <Content Include="Libraries\UnityEngine.VRModule.dll" />
+    <Content Include="Libraries\UnityEngine.VRModule.xml" />
+    <Content Include="Libraries\UnityEngine.WebModule.dll" />
+    <Content Include="Libraries\UnityEngine.WebModule.xml" />
+    <Content Include="Libraries\UnityEngine.WindModule.dll" />
+    <Content Include="Libraries\UnityEngine.WindModule.xml" />
+    <Content Include="Libraries\urecordRuntime.dll" />
+    <Content Include="Libraries\XGamingRuntime.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

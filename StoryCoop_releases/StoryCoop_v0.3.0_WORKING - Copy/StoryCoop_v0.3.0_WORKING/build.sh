@@ -1,0 +1,3 @@
+M=/mnt/user-data/uploads/Firewatch/Firewatch_Data/Managed; B=/mnt/user-data/uploads/Firewatch/BepInEx/core
+REFS=""; for f in mscorlib System System.Core UnityEngine UnityEngine.CoreModule UnityEngine.AnimationModule UnityEngine.IMGUIModule UnityEngine.PhysicsModule UnityEngine.TextRenderingModule UnityEngine.AudioModule UnityEngine.UI UnityEngine.UIModule Assembly-CSharp Assembly-CSharp-firstpass PlayMaker; do REFS="$REFS -r:$M/$f.dll"; done
+mkdir -p out; mcs -target:library -out:out/StoryCoop.dll -nostdlib -noconfig -langversion:7 -optimize+ $REFS -r:$B/BepInEx.dll -r:$B/0Harmony.dll *.cs 2>&1 | grep -v 'CS1685\|CS1684' 
